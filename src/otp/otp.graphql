@@ -1,0 +1,34 @@
+type OTP {
+  id: ID!
+  code: String!
+  expiry: DateTime!
+  email: String!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateOTPInput {
+  code: String!
+  expiry: DateTime!
+  email: String!
+}
+
+input UpdateOTPInput {
+  id: ID!
+  code: String
+  expiry: DateTime
+  email: String
+}
+
+type Query {
+  getOTP(id: ID!): OTP
+  getOTPs: [OTP!]!
+}
+
+type Mutation {
+  createOTP(data: CreateOTPInput!): OTP!
+  updateOTP(id: ID!, data: UpdateOTPInput!): OTP!
+  deleteOTP(id: ID!): OTP!
+}
+scalar DateTime

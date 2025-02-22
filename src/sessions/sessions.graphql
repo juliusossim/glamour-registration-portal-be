@@ -1,0 +1,35 @@
+type Session {
+  id: ID!
+  sessionToken: String!
+  userId: String!
+  user: User!
+  expires: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateSessionInput {
+  sessionToken: String!
+  userId: String!
+  expires: DateTime!
+}
+
+input UpdateSessionInput {
+  id: ID!
+  sessionToken: String
+  userId: String
+  expires: DateTime
+}
+
+type Query {
+  getSession(id: ID!): Session
+  getAllSessions: [Session!]!
+}
+
+type Mutation {
+  createSession(data: CreateSessionInput!): Session!
+  updateSession(id: ID!, data: UpdateSessionInput!): Session!
+  deleteSession(id: ID!): Session!
+}
+
+scalar DateTime

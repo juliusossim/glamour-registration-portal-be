@@ -1,0 +1,35 @@
+type OAuthAccount {
+  id: ID!
+  provider: String!
+  providerAccountId: String!
+  userId: String!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateOAuthAccountInput {
+  provider: String!
+  providerAccountId: String!
+  userId: String!
+}
+
+input UpdateOAuthAccountInput {
+  id: ID!
+  provider: String
+  providerAccountId: String
+  userId: String
+}
+
+type Query {
+  getOAuthAccount(id: ID!): OAuthAccount
+  getAllOAuthAccounts: [OAuthAccount!]!
+}
+
+type Mutation {
+  createOAuthAccount(data: CreateOAuthAccountInput!): OAuthAccount!
+  updateOAuthAccount(id: ID!, data: UpdateOAuthAccountInput!): OAuthAccount!
+  deleteOAuthAccount(id: ID!): OAuthAccount!
+}
+
+scalar DateTime

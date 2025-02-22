@@ -1,0 +1,56 @@
+type User {
+  id: ID!
+  fullname: String!
+  email: String!
+  password: String!
+  phone: String
+  loginAttempt: Int!
+  blocked: Boolean!
+  refreshToken: String
+  otp: [OTP!]!
+  image: String
+  userName: String
+  isActive: Boolean!
+  address: [Address!]!
+  socials: Socials
+  oauthAccounts: [OAuthAccount!]!
+  sessions: [Session!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateUserInput {
+  fullname: String!
+  email: String!
+  password: String!
+  phone: String
+  image: String
+  userName: String
+}
+
+input UpdateUserInput {
+  id: ID!
+  fullname: String
+  email: String
+  password: String
+  phone: String
+  loginAttempt: Int
+  blocked: Boolean
+  refreshToken: String
+  image: String
+  userName: String
+  isActive: Boolean
+}
+
+type Query {
+  getUser(id: ID!): User
+  getUsers: [User!]!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): User!
+  updateUser(id: ID!, data: UpdateUserInput!): User!
+  deleteUser(id: ID!): User!
+}
+
+scalar DateTime

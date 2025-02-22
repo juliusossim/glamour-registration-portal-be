@@ -1,0 +1,41 @@
+type Socials {
+  id: ID!
+  facebook: String
+  twitter: String
+  instagram: String
+  linkedin: String
+  userId: String!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateSocialsInput {
+  facebook: String
+  twitter: String
+  instagram: String
+  linkedin: String
+  userId: String!
+}
+
+input UpdateSocialsInput {
+  id: ID!
+  facebook: String
+  twitter: String
+  instagram: String
+  linkedin: String
+  userId: String
+}
+
+type Query {
+  getSocials(id: ID!): Socials
+  getAllSocials: [Socials!]!
+}
+
+type Mutation {
+  createSocials(data: CreateSocialsInput!): Socials!
+  updateSocials(id: ID!, data: UpdateSocialsInput!): Socials!
+  deleteSocials(id: ID!): Socials!
+}
+
+scalar DateTime
